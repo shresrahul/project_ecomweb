@@ -1,0 +1,31 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Dashboard</h1>
+    <hr>
+
+    <!-- Content -->
+    <div class="row">
+        <div class="col p-2 card mx-2">
+            Products
+            <hr>
+            <a href="{% url 'list-product' %}">View Products</a>
+        </div>
+        <div class="col p-2 card mx-2">
+            Orders
+            <hr>
+            <a href="{% url 'list-product' %}">View Products</a>
+        </div>
+        <div class="col p-2 card mx-2">
+            Categories
+            <hr>
+            <a href="{% url 'add-category' %}">Add Category</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

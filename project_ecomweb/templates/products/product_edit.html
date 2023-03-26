@@ -1,0 +1,58 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}
+    Product | Edit
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1>Product Update</h1>
+    <hr>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'list-product' %}">Products</a></li>
+          <li class="breadcrumb-item active">Product Update</li>
+        </ol>
+    </nav>
+    <div class="card p-5">
+        <form action="{% url 'update-product' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{data.id}}">
+            <div class="form-group mb-2">
+                <label for="title">Title</label>
+                <input type="text" name="title" value="{{data.title}}" class="form-control mt-2">
+            </div>
+            <div class="form-group mb-2">
+                <label for="desc">Description</label>
+                <input type="text" name="desc" value="{{data.desc}}" class="form-control mt-2">
+            </div>
+            <div class="form-group mb-2">
+                <label for="category">Category</label>
+                <select name="category" class="form-control mt-2">
+                    {% for val in categories %}
+                    <option value="{{val.id}}">{{val.category_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mb-2">
+                <label for="price">Price</label>
+                <input type="text" name="price" value="{{data.price}}" class="form-control mt-2">
+            </div>
+            <div class="form-group mb-2">
+                <label for="quantity">Quantity</label>
+                <input type="text" name="quantity" value="{{data.quantity}}" class="form-control mt-2">
+            </div>
+            <div class="form-group mb-2">
+                <label for="discount">Discount</label>
+                <input type="text" name="discount" value="{{data.discount}}" class="form-control mt-2">
+            </div>
+            <div class="form-group mb-2">
+                <label for="cod">Cash on delivery</label>
+                <input type="text" name="cod" value="{{data.cod}}" class="form-control mt-2">
+            </div>
+            <input type="submit" class="btn btn-primary col-12" value="UPDATE">
+        </form>
+    </div>
+</div>
+{% endblock content %}
