@@ -20,6 +20,7 @@
 
         <!-- Content -->
         <div class="card p-5">
+            {% include "partials/_message.html" %}
             <form action="{% url 'add-product' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}

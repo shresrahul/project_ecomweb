@@ -49,7 +49,8 @@ def product_add(request):
 
 @login_required(login_url='/authentication/login/')
 def product_index(request):
-    products = Product.objects.all()
+    # products = Product.objects.all()
+    products = Product.objects.filter(user=request.user)
     context = {"data": products}
     return render(request, 'products/product_index.html', context)
 
@@ -77,7 +78,7 @@ def product_update(request):
     if request.method == "POST":
         category = Category.objects.get(id=request.POST.get('category'))
         product = Product.objects.get(id=request.POST.get('id'))
-        user = User.objects.get(username='admin')
+        # user = User.objects.get(username='admin')
         product.title = request.POST.get('title')
         product.desc = request.POST.get('desc')
         product.cod = request.POST.get('cod')
@@ -85,7 +86,7 @@ def product_update(request):
         product.quantity = request.POST.get('quantity')
         product.discount = request.POST.get('discount')
         product.category = category
-        product.user = user
+        product.user = request.user
         product.save()
         return redirect('list-product')
     return redirect('list-product')
