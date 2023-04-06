@@ -17,11 +17,14 @@ class Product(models.Model):
     desc = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.FloatField()
-    image = models.FileField(null=True, blank=True)
+    image = models.FileField(null=True, blank=True, upload_to='products/')
     quantity = models.IntegerField()
     discount = models.FloatField()
     cod = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
 
     class Meta:
         db_table = 'app_products'

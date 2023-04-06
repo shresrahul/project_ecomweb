@@ -41,6 +41,7 @@ def product_add(request):
         product.discount = request.POST.get('discount')
         product.cod = request.POST.get('cod')
         product.category = category
+        product.image = request.FILES.get('image')
         product.user = request.user
         product.save()
         return redirect('list-product')
@@ -86,6 +87,7 @@ def product_update(request):
         product.quantity = request.POST.get('quantity')
         product.discount = request.POST.get('discount')
         product.category = category
+        product.image = request.FILES.get('image')
         product.user = request.user
         product.save()
         return redirect('list-product')

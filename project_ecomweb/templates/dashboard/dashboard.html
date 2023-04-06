@@ -4,6 +4,12 @@
 Dashboard
 {% endblock %}
 
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <h1>Dashboard</h1>
@@ -27,5 +33,13 @@ Dashboard
             <a href="{% url 'add-category' %}">Add Category</a>
         </div>
     </div>
+    <img src="{% static 'image/photo.jpg' %}" alt="arsenal" width="200" height="200">
+    <div id="message">
+    </div>
 </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
